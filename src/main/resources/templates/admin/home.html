@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Admin Page</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script th:src="@{/css/card.js}"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+    
+	
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration"
+				type="Submit">Logout</button>
+		</form>    
+		
+		<div class="panel-group" style="margin-top:40px">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				<div class="panel-body">
+					
+					 <div class="container" >
+					
+	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<form autocomplete="off" action="#" th:action="@{/admin/home}" th:object="${users}" method="post" class="form-horizontal" role="form">
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* First Name:</h3>
+						<label th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{firstname}" placeholder="FirstName"
+								class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>Middle Name:</h3>
+						<label th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{middlename}" placeholder="MiddleName"
+								class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* Last Name:</h3>
+						<label	th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{lastname}"
+								placeholder="Last Name" class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* Bank Name:</h3>
+						<label	th:if="${#fields.hasErrors('bankname')}" th:errors="*{bankname}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{bankname}"
+								placeholder="Bank Name" class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* Card number:</h3>
+						<label	th:if="${#fields.hasErrors('cardno')}" th:errors="*{cardno}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{cardno}"
+								placeholder="Card No." class="form-control" /> 
+						</div>
+					</div>
+				<div class="form-group">
+						<div class="col-sm-9"><h3>* Cvv number:</h3>
+						<label	th:if="${#fields.hasErrors('cvv')}" th:errors="*{cvv}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{cvv}"
+								placeholder="cvv no." class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* Valid through:</h3>
+						<label	th:if="${#fields.hasErrors('validfrom')}" th:errors="*{validfrom}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{validfrom}"
+								placeholder="mm/yy" class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* Expiry:</h3>
+						<label	th:if="${#fields.hasErrors('expiry')}" th:errors="*{expiry}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{expiry}"
+								placeholder="mm/yy " class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9"><h3>* Card type:</h3>
+						<label	th:if="${#fields.hasErrors('cardtype')}" th:errors="*{cardtype}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{cardtype}"
+								placeholder="card type" class="form-control" /> 
+						</div>
+					</div>
+					
+
+					<div class="form-group">
+						<div class="col-sm-5">
+							<button type="submit" class="btn btn-primary btn-block" onsubmit=blur() >submit</button>
+						</div>
+					</div>
+					
+					<span th:utext="${successMessage}"></span>
+					<div class="form-group">
+						<div class="col-sm-5">
+							<button type="reset" class="btn btn-primary btn-block" >reset</button>
+						</div>
+					</div>
+					
+					
+	</form>
+    </div>
+			</div>
+			</div>
+					
+				</div>
+				<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+		<!-- <div class="col-md-6 col-md-offset-3">	   -->
+			<header id="rcorners1">
+  				<div id="info">
+  				<p><font size="7" color="#cococo"><span th:utext="${bankname}"></span></font>
+  				</p>
+					<p><font size="5" color="#cococo"><span th:utext="${cardno}"></span>
+					</font>
+					</p>
+					
+					<p>
+						<label>from</label><font size="3" color="#cococo"><span th:utext="${validdate}"></span></font>
+						<label>exp thru</label><font size="3" color="#cococo"><span th:utext="${expiry}"></span></font>
+					</p>
+					<p>
+						<font size="5" color="#cococo"><span th:utext="${name}"></span>
+							
+						</font>
+					</p>
+				</div> 
+			</header>
+			<br/>
+			<header id="rcorners2">
+				
+				<div id='info1'><pre style= "margin-top:100px;"><font size="4" color="black">XXXX XXXX XXXX XXXX</font>     <font size="3" color="black"><span th:utext="${cvv}"></span></font></pre>
+				</div>
+			</header>
+		</div>
+		</div>
+		</div>
+		
+</body>
+</html>
