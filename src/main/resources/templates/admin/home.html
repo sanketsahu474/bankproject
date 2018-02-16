@@ -14,12 +14,13 @@
 <body>
 	<div class="container">
     
-	
+
 		<form th:action="@{/logout}" method="get">
 			<button class="btn btn-md btn-danger btn-block" name="registration"
 				type="Submit">Logout</button>
 		</form>    
 		
+
 		<div class="panel-group" style="margin-top:40px">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
@@ -30,7 +31,7 @@
 					 <div class="container" >
 					
 	<div class="row">
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-8 col-md-offset-3">
 				<form autocomplete="off" action="#" th:action="@{/admin/home}" th:object="${users}" method="post" class="form-horizontal" role="form">
 					<div class="form-group">
 						<div class="col-sm-9"><h3>* First Name:</h3>
@@ -60,8 +61,11 @@
 						<div class="col-sm-9"><h3>* Bank Name:</h3>
 						<label	th:if="${#fields.hasErrors('bankname')}" th:errors="*{bankname}"
 								class="validation-message"></label>
-							<input type="text" th:field="*{bankname}"
-								placeholder="Bank Name" class="form-control" /> 
+						<!--  	<input type="text" th:field="*{bankname}"
+								placeholder="Bank Name" class="form-control" /> -->
+								 <select th:field="*{bankname}" style="width: 282px; height: 27px;">
+	    	          <option th:each="bankname : ${allBanknames}" th:value="${bankname}" th:text="${bankname}">bankname</option>
+	    	       </select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -97,11 +101,22 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-9"><h3>* Card type:</h3>
+						<div class="col-sm-16"><h3>* Card type:</h3>
+						<!--  
 						<label	th:if="${#fields.hasErrors('cardtype')}" th:errors="*{cardtype}"
 								class="validation-message"></label>
 							<input type="text" th:field="*{cardtype}"
-								placeholder="card type" class="form-control" /> 
+								placeholder="card type" class="form-control" /> -->
+						 <input type="radio" th:field="*{cardtype}" value="Master">
+							 <label for="americancard"><img th:src="@{/images/MasterCard.png}" class="img-responsive center-block" width="40" height="80" alt="Master" /></label>
+	    	       			<input type="radio" th:field="*{cardtype}" value="Visa">
+	    	       			<label for="americancard"><img th:src="@{/images/visa.png}" class="img-responsive center-block" width="40" height="80" alt="visa"/></label>
+	    	       	<input type="radio" th:field="*{cardtype}" value="American">
+	    	       	    	<label for="americancard"><img th:src="@{/images/american.png}" class="img-responsive center-block" width="40" height="80" alt="American"/></label>
+	    	       			 <input type="radio" th:field="*{cardtype}" value="Discover">
+	    	       			 <label for="americancard"><img th:src="@{/images/discover.jpeg}" class="img-responsive center-block" width="40" height="80" alt="Discover"/></label>
+	    	      		<label	th:if="${#fields.hasErrors('cardtype')}" th:errors="*{cardtype}"
+								class="validation-message"></label>
 						</div>
 					</div>
 					
@@ -130,18 +145,25 @@
 		<!-- <div class="col-md-6 col-md-offset-3">	   -->
 			<header id="rcorners1">
   				<div id="info">
-  				<p><font size="7" color="#cococo"><span th:utext="${bankname}"></span></font>
-  				</p>
-					<p><font size="5" color="#cococo"><span th:utext="${cardno}"></span>
+  				<p style=" padding-left: 150px;">
+  				</p><font size="7" color="#cococo"><span th:utext="${bankname}"></span></font>
+  				
+					<p>
+					 <img th:src="@{/images/chip.jpeg}" class="img-responsive center-block" width="80" height="80" alt="chip" style="padding-right: 10px;padding-bottom: 20px;float:left;"/>
+					 
+					 
+					
+					<font size="5" color="#cococo"><span th:utext="${cardno}"></span>
 					</font>
 					</p>
 					
 					<p>
-						<label>from</label><font size="3" color="#cococo"><span th:utext="${validdate}"></span></font>
-						<label>exp thru</label><font size="3" color="#cococo"><span th:utext="${expiry}"></span></font>
+						<label style="padding-left: 80px;">from</label><font size="3" color="#cococo"><span th:utext="${validdate}"></span></font>
+						<label style="padding-left: 80px;">
+    exp thru</label><font size="3" color="#cococo"><span th:utext="${expiry}"></span></font>
 					</p>
-					<p>
-						<font size="5" color="#cococo"><span th:utext="${name}"></span>
+					<p style="padding-left: 80px;">
+						<font size="5" color="#cococo" ><span th:utext="${name}"></span>
 							
 						</font>
 					</p>

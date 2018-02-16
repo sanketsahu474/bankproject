@@ -31,6 +31,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Value("${spring.queries.userdetails-query}")
 	private String userdetails;
+	
+	@Value("${spring.queries.search-query}")
+	private String search;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {

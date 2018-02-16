@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,7 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
-
+// --------------------------------------this request is for login page-----------------------------------------
 	@RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -29,7 +32,7 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	
+//-----------------------------------	this request is for registration page---------------------------------------
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -38,7 +41,7 @@ public class LoginController {
 		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
-	
+	// ----------------------------------this request is to send data from registration page---------------------------------------------------
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -59,6 +62,7 @@ public class LoginController {
 		}
 		return modelAndView;
 	}
+	//--------------------------------request for admin/home page after correct credential has been given by user-----------------------------------------
 	
 	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
 	public ModelAndView home(){
@@ -71,13 +75,24 @@ public class LoginController {
 		modelAndView.addObject("users", use);
 		//till here
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+		modelAndView.addObject("allBanknames",getBanknames());
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
-	
+	private List<String> getBanknames() {
+	    List<String> list = new ArrayList<>();
+	    list.add("SBI Bank");
+	    list.add("HDFC Bank");
+	    list.add("AXIS Bank");
+	    list.add("ICICI Bank");
+	    list.add("CITY Bank");
+	    return list;
+	}
+//----------------------------------------------------request for submitting form details-----------------------------------------------------------------------	
 	@RequestMapping(value = "/admin/home", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid users use, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("allBanknames",getBanknames());
 		users useExists =userService.findByCardno(use.getCardno());
 		if(useExists != null) {
 			bindingResult
@@ -89,8 +104,6 @@ public class LoginController {
 		} else {
 			userService.saveusers(use);
 			
-			//modelAndView.addObject("user", new users());
-			//for change
 			modelAndView.addObject("cardno",""+use.getCardno());
 			modelAndView.addObject("name",""+use.getFirstname()+" "+use.getMiddlename()+" "+use.getLastname()+" ");
 			modelAndView.addObject("validdate",""+use.getValidfrom());
@@ -105,4 +118,5 @@ public class LoginController {
 		return modelAndView;
 	}
 
+	
 }

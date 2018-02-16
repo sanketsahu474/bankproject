@@ -50,93 +50,9 @@ label {
     text-align:left;
     padding-right:10px;
 }
-
-#firstNameInput{
-width: 170px; 
-height: 30px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#middleNameInput{
-width: 170px; 
-height: 30px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#lastNameInput{
-width: 170px; 
-height: 30px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-#bank{
-width: 170px; 
-height: 30px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#creditCard1{
-width: 70px; 
-height: 30px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#creditCard2{
-width: 70px; 
-height: 30px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#creditCard3{
-width: 70px; 
-height: 30px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#creditCard4{
-width: 70px; 
-height: 30px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#fromMonth{
-width: 150px; 
-height: 25px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#month{
-width: 150px; 
-height: 25px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-
-#cvvInput{
-width: 60px; 
-height: 30px;
-margin-left:0px;
-border-color:#99999957;
-border-width: medium;
-}
-
 #rcorners1 {
 	border-radius: 25px;
-	 background: #73AD21;
+	 background:#73AD21;
 	background-position: left top;
 	
 	padding: 20px; 

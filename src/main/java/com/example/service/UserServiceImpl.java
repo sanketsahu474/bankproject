@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.model.Role;
 import com.example.model.User;
+
 import com.example.model.users;
 import com.example.repository.RoleRepository;
+
 import com.example.repository.UserRepository;
 import com.example.repository.usersRepository;
 
@@ -23,6 +25,8 @@ public class UserServiceImpl implements UserService{
     private RoleRepository roleRepository;
 	@Autowired
 	private usersRepository useRepository;
+
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
@@ -58,6 +62,8 @@ public class UserServiceImpl implements UserService{
 	public users  findByCardno(String cardno) {
 		return useRepository.findByCardno(cardno);
 	}
+	
+	
 	
 
 }
